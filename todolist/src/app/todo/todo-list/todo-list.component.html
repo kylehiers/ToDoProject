@@ -1,0 +1,23 @@
+<div class="container">
+    <h4>To Do List</h4>
+    <br>
+    <div class="row">
+        <div class="col-lg-5">
+            <h4 *ngIf="noItems">No items to do<button class="btn btn-link" routerLink="/addItem">Add Something To Do</button></h4>
+            <ul class="list-group">
+                <li *ngFor="let item of todoItems" class="list-group-item">
+                    <span>
+                        <b>Item: </b>{{ item.title }} <br> 
+                        <b>Description: </b>{{ item.description }} <br>
+                        <b>Date Created: </b>{{ item.startDate }} <br>
+                        <b>To Be Done By: </b>{{ item.endDate }} 
+                    </span>
+                    <div class="row">
+                        <button class="btn btn-link pull-right btn-md" (click)="onUpdate(item.id)">Update</button>
+                        <button class="btn btn-link pull-right btn-md" (click)="onDelete(item.id)">Delete</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

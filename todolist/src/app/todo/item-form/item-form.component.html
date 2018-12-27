@@ -1,0 +1,39 @@
+<div class="container">
+  <h4>Add a New To Do Item</h4>
+  <br>
+  <div class="row">
+    <div class="col-xs-6">
+      <form [formGroup]="itemForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label>Title: </label>
+          <input formControlName="title" type="text" class="form-control" required [ngClass]="{ 'invalidInput' : submitted && f.title?.errors }">
+          <div *ngIf="!!f.title.errors && submitted" class="error">
+            <div *ngIf="!!f.title.errors?.required">Title required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Description: </label>
+          <input formControlName="description" type="text" class="form-control" required [ngClass]="{ 'invalidInput' : submitted && f.description.errors }">
+          <div *ngIf="!!f.description.errors && submitted" class="error">
+            <div *ngIf="!!f.description.errors?.required">Description required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Start Date (yyyy-MM-dd): </label>
+          <input formControlName="startDate" type="date" class="form-control" required [ngClass]="{ 'invalidInput' : submitted && f.startDate.errors?.required }">
+          <div *ngIf="!!(f.startDate.touched || submitted) && !!f.startDate.errors?.required" class="error">Please enter a
+            start date</div>
+        </div>
+        <div class="form-group">
+          <label>To Be Done By (yyyy-MM-dd): </label>
+          <input formControlName="endDate" type="date" class="form-control" required [ngClass]="{ 'invalidInput' : submitted && f.endDate.errors?.required }">
+          <div *ngIf="!!(f.endDate.touched || submitted) && !!f.endDate.errors?.required" class="error">Please enter an end
+            date</div>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary">Add Item</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
